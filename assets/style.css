@@ -19,6 +19,12 @@
 .form-control {
 
     text-align: center;
-    text-
     
+}
+
+.bordered {
+
+    border-bottom: 8px solid grey;
+    width: 100%;
+
 }

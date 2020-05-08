@@ -1,9 +1,23 @@
 
+.no-gutters {
+
+    margin-left: 20px;
+    margin-right:20px;
+
+}
+
 .separator-lrg {
 
     padding: 150px;
 
 }
+
+.separator-med {
+
+    padding: 74px;
+
+}
+
 .separator-sml {
 
     padding: 20px;
@@ -24,7 +38,65 @@
 
 .bordered {
 
-    border-bottom: 8px solid grey;
+    border-bottom: 12px solid grey;
     width: 100%;
 
 }
+
+.timeSurr {
+
+    border-bottom: 4px dotted black;
+    border-right: 4px dotted black;
+    border-top: 4px dotted black;
+    padding-bottom: 25px;
+    
+}
+
+.eventSurr {
+
+    background-color:rgb(81, 214, 114);
+    border: none;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+
+}
+
+.past{
+
+    background-color: grey;
+    color: white;
+
+}
+
+.current{
+
+    background-color: tomato;
+
+}
+
+.editSurr {
+
+    background-color: rgb(37, 182, 182);
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    text-align: center;
+
+}
+
+.edit {
+
+    background:none;
+    border:none;
+    font-size:1em;
+
+}
+
+/* .timeBlock {
+
+    text-align: center;
+    max-width: 85%;
+    display: inline-block
+
+} */

@@ -1,6 +1,34 @@
 var nameSet = localStorage.getItem("name")
 var dt = new Date()
 
+var timeBlocks = document.querySelectorAll("#timeBlock")
+
+function colorSet() {
+
+    timeBlocks.forEach(function(block){
+
+        if (block.getAttribute('time') < dt.getHours()) {
+
+            block.querySelector("#eventSurr").classList.add("past")
+
+        }
+
+        
+        if (block.getAttribute('time') == dt.getHours()) {
+
+            block.querySelector("#eventSurr").classList.add("current")
+
+        }
+
+    })
+
+    setTimeout(function() {
+        colorSet()
+    }, 60000)
+
+}
+
+
 document.title = nameSet +"'s Schedule"
 $("#scheduleBrand").text(nameSet +"'s Workday Schedule")
 document.getElementById("date").innerHTML = dt.toLocaleDateString()
@@ -45,11 +73,11 @@ function startTime() {
     
   }
 
-  t = setTimeout(function() {
+  setTimeout(function() {
     startTime()
   }, 1000)
 
 }
 
 startTime()
-
+colorSet()

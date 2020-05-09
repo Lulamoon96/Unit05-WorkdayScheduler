@@ -169,14 +169,20 @@ function colorSet() {
         block.querySelector(".eventSurr").classList.add("past")
         block.querySelector(".eventSurr").classList.remove("current")
 
-
     }
 
     
-    if (block.getAttribute('time') == today.getHours()) {
+    else if (block.getAttribute('time') == today.getHours()) {
 
         block.querySelector(".eventSurr").classList.add("current")
         block.querySelector(".eventSurr").classList.remove("past")
+
+    }
+
+    else {
+
+      block.querySelector(".eventSurr").classList.remove("past")
+      block.querySelector(".eventSurr").classList.remove("current")
 
     }
 

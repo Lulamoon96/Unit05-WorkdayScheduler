@@ -1,37 +1,22 @@
-var nameSet = localStorage.getItem("name")
-var dt = new Date()
-
+//Retrieves all the timeBlocks to style them properly
 var timeBlocks = document.querySelectorAll(".timeBlock")
 
+//Retrieves user name and user events from storage
+//Sets a new dictionary if no events are made yet
+var nameSet = localStorage.getItem("name")
 var events = JSON.parse(localStorage.getItem("events"))
 if (!events){
   events = {}
 }
 
-
+//Sets the schedule to personal name
 document.title = nameSet +"'s Schedule"
 $("#scheduleBrand").text(nameSet +"'s Workday Schedule")
-document.getElementById("date").innerHTML = dt.toLocaleDateString()
 
-
-var second = 1000;
-
-function pad(num) {
-  return ('0' + num).slice(-2);
-}
-
-function checkTime(i) {
-
-  if (i < 10) {
-    i = "0" + i;
-  }
-
-  return i;
-
-}
-
+//Makes the div for the current time editable and changes the edit button to a save button
 $(".editSurr").on('click', ".edit", function(){
 
+  //Super jank way to get the current time being edited
   var timeOf = $(this).parent().parent().parent().attr("time")
   var toEdit = "#eventSurr" + timeOf
   $(this).html("<h2 class='event'>Save</h2>")
@@ -40,6 +25,7 @@ $(".editSurr").on('click', ".edit", function(){
   $(toEdit).children().focus()
 
 })
+
 
 $(".editSurr").on('click', ".save", function(){
 
@@ -53,12 +39,30 @@ $(".editSurr").on('click', ".save", function(){
 
 })
 
-function renderEvents(){
+function renderEvents(events){
 
-  events.forEach
+  for (const time in events) {
 
+    $("[time=" + time +"]").find(".event").html(events[time])
+
+  }
 }
 
+function pad(num) {
+
+  return ('0' + num).slice(-2);
+  
+}
+
+function checkTime(i) {
+
+  if (i < 10) {
+    i = "0" + i;
+  }
+
+  return i;
+
+}
 
 function startTime() {
 
@@ -89,22 +93,49 @@ function startTime() {
 
 }
 
+function eventSet() {
+
+  var today = new Date()
+  var hour = today.getHours()
+
+  document.getElementById("date").innerHTML = today.toLocaleDateString()
+
+  if (events[hour]){
+
+    $("#currEv").html("Current Event: " + events[hour])
+
+  }
+
+  if (events[hour + 1]){
+
+    $("#nextEv").html("Upcoming Event: " + events[hour + 1])
+
+  }
+
+  setTimeout(function() {
+    eventSet()
+  } , 60000)
+
+}
+
 function colorSet() {
 
+  var today = new Date()
+  console.log("set")
   timeBlocks.forEach(function(block){
 
-      if (block.getAttribute('time') < dt.getHours()) {
+    if (block.getAttribute('time') < today.getHours()) {
 
-          block.querySelector(".eventSurr").classList.add("past")
+        block.querySelector(".eventSurr").classList.add("past")
 
-      }
+    }
 
-      
-      if (block.getAttribute('time') == dt.getHours()) {
+    
+    if (block.getAttribute('time') == today.getHours()) {
 
-          block.querySelector(".eventSurr").classList.add("current")
+        block.querySelector(".eventSurr").classList.add("current")
 
-      }
+    }
 
   })
 
@@ -116,3 +147,5 @@ function colorSet() {
 
 startTime()
 colorSet()
+eventSet()
+renderEvents(events)

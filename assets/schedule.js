@@ -167,6 +167,8 @@ function colorSet() {
     if (block.getAttribute('time') < today.getHours()) {
 
         block.querySelector(".eventSurr").classList.add("past")
+        block.querySelector(".eventSurr").classList.remove("current")
+
 
     }
 
@@ -174,6 +176,7 @@ function colorSet() {
     if (block.getAttribute('time') == today.getHours()) {
 
         block.querySelector(".eventSurr").classList.add("current")
+        block.querySelector(".eventSurr").classList.remove("past")
 
     }
 

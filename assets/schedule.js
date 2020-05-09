@@ -98,7 +98,7 @@ function startTime() {
 
   else {
 
-    document.getElementById('time').innerHTML = hour + ":" + m + ":" + s + " AM"
+    document.getElementById('time').innerHTML = h + ":" + m + ":" + s + " AM"
     
   }
 

@@ -35,6 +35,12 @@ outline:none;
 
 }
 
+.namedBox{
+
+    display: none;
+
+}
+
 .form-control {
 
     text-align: center;

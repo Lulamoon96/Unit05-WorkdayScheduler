@@ -28,6 +28,7 @@ if (nameSet) {
 
     $("#noName").css("display", "none")
     $("#named").css("display", "block")
+    $("#scheduleEntry").css("display", "block")
     $("#nameWelcome").text("Welcome, " + nameSet)
 
 }

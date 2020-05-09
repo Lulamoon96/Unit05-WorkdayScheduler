@@ -1,5 +1,7 @@
+//Get user name if already set
 var nameSet = localStorage.getItem("name")
 
+//Set user name and save to local storage if nonexistent yet
 $("#nameSubmit").on("click", function(){
 
     event.preventDefault()
@@ -12,6 +14,7 @@ $("#nameSubmit").on("click", function(){
 
 })
 
+//Takes users to schedule when clicked
 $("#scheduleVisit").on("click", function(){
 
     event.preventDefault()
@@ -20,7 +23,7 @@ $("#scheduleVisit").on("click", function(){
 
 })
 
-
+//Checks to see if a name already exists, and hides name submit as needed
 if (nameSet) {
 
     $("#noName").css("display", "none")

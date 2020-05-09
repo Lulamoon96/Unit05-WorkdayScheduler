@@ -4,16 +4,6 @@ border:none;
 outline:none;
 }
 
-<div></div>[contenteditable="true"]:focus > style{
-
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    font-size: large;
-
-    }
-
 .no-gutters {
 
     margin-left: 20px;

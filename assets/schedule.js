@@ -1,31 +1,11 @@
 var nameSet = localStorage.getItem("name")
 var dt = new Date()
 
-var timeBlocks = document.querySelectorAll("#timeBlock")
+var timeBlocks = document.querySelectorAll(".timeBlock")
 
-function colorSet() {
-
-    timeBlocks.forEach(function(block){
-
-        if (block.getAttribute('time') < dt.getHours()) {
-
-            block.querySelector("#eventSurr").classList.add("past")
-
-        }
-
-        
-        if (block.getAttribute('time') == dt.getHours()) {
-
-            block.querySelector("#eventSurr").classList.add("current")
-
-        }
-
-    })
-
-    setTimeout(function() {
-        colorSet()
-    }, 60000)
-
+var events = JSON.parse(localStorage.getItem("events"))
+if (!events){
+  events = {}
 }
 
 
@@ -49,6 +29,36 @@ function checkTime(i) {
   return i;
 
 }
+
+$(".editSurr").on('click', ".edit", function(){
+
+  var timeOf = $(this).parent().parent().parent().attr("time")
+  var toEdit = "#eventSurr" + timeOf
+  $(this).html("<h2 class='event'>Save</h2>")
+  $(this).attr("class", "save")
+  $(toEdit).children().attr("contenteditable", true)
+  $(toEdit).children().focus()
+
+})
+
+$(".editSurr").on('click', ".save", function(){
+
+  var timeOf = $(this).parent().parent().parent().attr("time")
+  var toEdit = "#eventSurr" + timeOf
+  $(this).html("<h2 class='event'>Edit</h2>")
+  $(this).attr("class", "edit")
+  $(toEdit).children().attr("contenteditable", false)
+  events[timeOf] = $(toEdit).children().html()
+  localStorage.setItem("events", JSON.stringify(events))
+
+})
+
+function renderEvents(){
+
+  events.forEach
+
+}
+
 
 function startTime() {
 
@@ -76,6 +86,31 @@ function startTime() {
   setTimeout(function() {
     startTime()
   }, 1000)
+
+}
+
+function colorSet() {
+
+  timeBlocks.forEach(function(block){
+
+      if (block.getAttribute('time') < dt.getHours()) {
+
+          block.querySelector(".eventSurr").classList.add("past")
+
+      }
+
+      
+      if (block.getAttribute('time') == dt.getHours()) {
+
+          block.querySelector(".eventSurr").classList.add("current")
+
+      }
+
+  })
+
+  setTimeout(function() {
+      colorSet()
+  }, 60000)
 
 }
 

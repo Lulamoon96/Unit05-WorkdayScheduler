@@ -1,3 +1,18 @@
+[contenteditable="true"]:active,
+[contenteditable="true"]:focus{
+border:none;
+outline:none;
+}
+
+<div></div>[contenteditable="true"]:focus > style{
+
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: large;
+
+    }
 
 .no-gutters {
 
@@ -52,6 +67,35 @@
     
 }
 
+.edit{
+
+    margin-top: 13px;
+    color: white;
+    background:none;
+    border:none;
+    font-size:1em;
+
+}
+
+.save{
+
+    margin-top: 13px;
+    color: white;
+    background:none;
+    border:none;
+    font-size:1em;
+
+}
+
+.event{
+
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+}
+
 .eventSurr {
 
     background-color:rgb(81, 214, 114);
@@ -84,19 +128,3 @@
     text-align: center;
 
 }
-
-.edit {
-
-    background:none;
-    border:none;
-    font-size:1em;
-
-}
-
-/* .timeBlock {
-
-    text-align: center;
-    max-width: 85%;
-    display: inline-block
-
-} */

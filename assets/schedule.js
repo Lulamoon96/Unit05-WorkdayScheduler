@@ -128,6 +128,18 @@ function eventSet() {
 
   }
 
+  if(!events[hour] || events[hour] === "" || events[hour] === "<br>"){
+
+    $("#currEv").empty()
+
+  }
+
+  if (!events[hour + 1] || events[hour + 1] === "" || events[hour + 1] === "<br>"){
+
+    $("#nextEv").empty()
+
+  }
+
   //Check every minute
   setTimeout(function() {
     eventSet()
@@ -142,7 +154,8 @@ function eventSetOnce() {
   var today = new Date()
   var hour = today.getHours()
 
-
+  console.log(events[hour] === "<br>")
+  console.log(events[hour + 1] === "<br>")
   if (events[hour]){
 
     $("#currEv").html("Current Event: " + events[hour])
@@ -152,6 +165,18 @@ function eventSetOnce() {
   if (events[hour + 1]){
 
     $("#nextEv").html("Upcoming Event: " + events[hour + 1])
+
+  }
+  
+  if(!events[hour] || events[hour] === "" || events[hour] === "<br>"){
+
+    $("#currEv").empty()
+
+  }
+
+  if (!events[hour + 1] || events[hour + 1] === "" || events[hour + 1] === "<br>"){
+
+    $("#nextEv").empty()
 
   }
 
